@@ -1,0 +1,40 @@
+#!/bin/bash
+###### 
+  ##  
+  ##  
+  ##  
+######
+while :
+do
+source colores.sh
+clear
+if [ ! "$(command -v irssi)" ]; then
+clear
+echo -e " $azul  [${rojo}❎${azul}]$cyan las dependencias no estan instaladas$azul [${rojo}❎$azul]"
+sleep 1.3
+clear
+echo "       [🔰] instalando las dependencias [🔰] "
+sleep 1.3
+pkg install irssi
+clear
+echo "    [🔰] las dependencias estan instaladas [🔰] "
+sleep 2.1
+clear
+bash irssi2
+else
+
+read -p $'\e\033[3;31m ingresa un nombre de usuario \e\033[38;5;31m' usuario
+
+if [ -r $usuario ];then
+echo -e "$azul[${rojo}❎$azul]${rojo2}$cyan se nesesita un nombre de usuario para iniciar ${GRAY}${azul}[${rojo}❎$azul]"
+sleep 3.1
+else
+
+echo " aprete CTRL + Z para salir de la herramienta "
+irssi -c chat.freenode.net -n $usuario 
+
+fi
+
+
+fi 
+done
